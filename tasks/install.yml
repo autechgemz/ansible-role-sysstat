@@ -1,0 +1,20 @@
+---
+
+- name: Install tasks
+  become: true
+  tags:
+    - sysstat_install
+    - sysstat
+  block:
+    - name: Install sysstat package
+      when: ansible_os_family == 'Debian'
+      ansible.builtin.apt:
+        name: ["{{ item }}"]
+        update_cache: true
+      with_items: "{{ sysstat_package_name }}"
+    - name: Install sysstat package
+      when: ansible_os_family == 'RedHat'
+      ansible.builtin.yum:
+        name: ["{{ item }}"]
+        state: "{{ sysstat_package_ensure }}"
+      with_items: "{{ sysstat_package_name }}"

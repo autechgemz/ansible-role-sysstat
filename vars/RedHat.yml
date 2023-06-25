@@ -1,0 +1,16 @@
+---
+
+sysstat_package_name:
+  - 'sysstat'
+
+sysstat_daemon_config_file: '/etc/sysconfig/sysstat'
+
+sysstat_config_file: '/etc/sysstat/sysstat'
+
+sysstat_service_name: sysstat
+
+sysstat_config_cronpath: '/etc/cron.d/sysstat'
+
+sysstat_cron_service_name: 'crond'
+
+sysstat_config_options_default: {}

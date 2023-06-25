@@ -1,0 +1,8 @@
+---
+
+sysstat_daemon_config_default:
+  HISTORY: 28
+  COMPRESSAFTER: 31
+  SADC_OPTIONS: " -S DISK"
+  SA_DIR: /var/log/sa
+  ZIP: "xz"

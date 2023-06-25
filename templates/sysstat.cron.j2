@@ -1,0 +1,10 @@
+# {{ ansible_managed }}
+{% if sysstat_config_crondata is defined and sysstat_config_crondata %}
+{% if sysstat_config_crondata is iterable and (sysstat_config_crondata is not string and sysstat_config_crondata is not mapping) %}
+{% for cron in sysstat_config_crondata %}
+{{ cron }}
+{% endfor %}
+{% else %}
+{{ sysstat_config_crondata }}
+{% endif %}
+{% endif %}

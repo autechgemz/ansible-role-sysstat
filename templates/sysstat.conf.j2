@@ -1,0 +1,12 @@
+# {{ ansible_managed }}
+{% if sysstat_config_options_merged is defined and sysstat_config_options_merged %}
+{% for key, value in sysstat_config_options_merged.items() %}
+{% if key == 'UMASK' %}
+{{ key }}={{ value }}
+{% elif value is integer %}
+{{ key }}={{ value }}
+{% else %}
+{{ key }}="{{ value }}"
+{% endif %}
+{% endfor %}
+{% endif %}

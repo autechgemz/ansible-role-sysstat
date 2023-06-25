@@ -1,0 +1,12 @@
+# {{ ansible_managed }}
+{% if sysstat_daemon_config_merged is defined and sysstat_daemon_config_merged %}
+{% for key, value in sysstat_daemon_config_merged.items() %}
+{% if value is integer %}
+{{ key }}={{ value | int }}
+{% elif value is boolean %}
+{{ key }}="{% if value | bool %}true{% else %}false{% endif %}"
+{% else %}
+{{ key }}="{{ value | string }}"
+{% endif %}
+{% endfor %}
+{% endif %}

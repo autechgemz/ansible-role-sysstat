@@ -1,0 +1,23 @@
+---
+
+sysstat_package_name:
+  - 'sysstat'
+
+sysstat_daemon_config_file: '/etc/default/sysstat'
+
+sysstat_config_file: '/etc/sysstat/sysstat'
+
+sysstat_service_name: sysstat
+
+sysstat_config_cronpath: '/etc/cron.d/sysstat'
+
+sysstat_cron_service_name: 'cron'
+
+sysstat_config_options_default:
+  HISTORY: 7
+  COMPRESSAFTER: 10
+  SADC_OPTIONS: "-S DISK"
+  SA_DIR: /var/log/sysstat
+  ZIP: "xz"
+  DELAY_RANGE: 0
+  UMASK: "0022"

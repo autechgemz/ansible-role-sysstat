@@ -1,0 +1,41 @@
+---
+
+- name: Config tasks
+  become: true
+  tags:
+    - sysstat_config
+    - sysstat
+  block:
+    - name: Merge daemon configration
+      ansible.builtin.set_fact:
+        sysstat_daemon_config_merged: "{{ sysstat_daemon_config_default | ansible.builtin.combine(sysstat_daemon_config_options, recursive=True) }}"
+
+    - name: Merge configration
+      ansible.builtin.set_fact:
+        sysstat_config_options_merged: "{{ sysstat_config_options_default | ansible.builtin.combine(sysstat_config_options, recursive=True) }}"
+
+    - name: Manage sysstat daemon config
+      ansible.builtin.template:
+        src: sysstat.j2
+        dest: "{{ sysstat_daemon_config_file }}"
+        owner: root
+        group: root
+        mode: 0644
+      notify: Restart sysstat
+      when: sysstat_daemon_config_merged is defined and sysstat_daemon_config_merged
+
+    - name: Manage sysstat configration
+      ansible.builtin.template:
+        src: sysstat.conf.j2
+        dest: "{{ sysstat_config_file }}" 
+        owner: root
+        group: root
+        mode: 0644
+      notify: Restart sysstat
+      when:
+        - ansible_facts['os_family'] == 'Debian'
+        - sysstat_config_options_merged is defined and sysstat_config_options_merged
+
+    - name: Cron tasks 
+      ansible.builtin.include_tasks: cron.yml
+      when: sysstat_config_crondata is defined and sysstat_config_crondata

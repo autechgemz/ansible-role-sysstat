@@ -1,0 +1,7 @@
+---
+
+sysstat_daemon_config_default:
+  HISTORY: 28
+  COMPRESSAFTER: 31
+  SADC_OPTIONS: "-S DISK"
+  ZIP: "bzip2"

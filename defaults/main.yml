@@ -1,0 +1,11 @@
+---
+
+sysstat_package_ensure: 'present'
+
+sysstat_service_ensure: 'started'
+
+sysstat_service_enable: true
+
+sysstat_daemon_config_options: {}
+
+sysstat_config_options: {}

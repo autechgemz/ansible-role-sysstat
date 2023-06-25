@@ -1,0 +1,15 @@
+---
+
+- name: Restart sysstat
+  become: true
+  ansible.builtin.systemd:
+    name: "{{ sysstat_service_name }}"
+    state: restarted
+  when: not ansible_check_mode
+
+- name: Restart crond
+  become: true
+  ansible.builtin.systemd:
+    name: "{{ sysstat_cron_service_name }}"
+    state: restarted
+  when: not ansible_check_mode

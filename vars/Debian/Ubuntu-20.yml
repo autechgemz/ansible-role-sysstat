@@ -1,0 +1,4 @@
+---
+
+sysstat_daemon_config_default:
+  ENABLED: false

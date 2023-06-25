@@ -1,0 +1,9 @@
+galaxy_info:
+  role_name: sysstat
+  namespace: autechgemz
+  author: "autechgemz@gmail.com"
+  description: "Manage System performance tools." 
+  license: MIT
+  min_ansible_version: "1.2"
+  galaxy_tags: []
+dependencies: []
