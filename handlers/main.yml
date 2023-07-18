@@ -7,6 +7,18 @@
     state: restarted
   when: not ansible_check_mode
 
+- name: Sleep sysstat
+  become: true
+  ansible.builtin.shell: >
+    {% if ansible_facts['os_family'] == 'Debian' %}
+      /usr/lib/sysstat/sa1 --sleep
+    {% elif ansible_facts['os_family'] == 'RedHat' %}
+      /usr/lib64/sa/sa1 --sleep
+    {% endif %}
+  failed_when: false
+  args:
+    executable: /bin/bash
+
 - name: Restart crond
   become: true
   ansible.builtin.systemd:

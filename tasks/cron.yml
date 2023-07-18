@@ -7,5 +7,7 @@
     owner: root
     group: root
     mode: 0644
-  notify: Restart crond
+  notify:
+    - Sleep sysstat
+    - Restart crond
   when: sysstat_config_crondata is defined and sysstat_config_crondata

@@ -21,7 +21,9 @@
         owner: root
         group: root
         mode: 0644
-      notify: Restart sysstat
+      notify:
+        - Sleep sysstat
+        - Restart sysstat
       when: sysstat_daemon_config_merged is defined and sysstat_daemon_config_merged
 
     - name: Manage sysstat configration
@@ -31,7 +33,9 @@
         owner: root
         group: root
         mode: 0644
-      notify: Restart sysstat
+      notify:
+        - Sleep sysstat
+        - Restart sysstat
       when:
         - ansible_facts['os_family'] == 'Debian'
         - sysstat_config_options_merged is defined and sysstat_config_options_merged
