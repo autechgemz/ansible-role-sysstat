@@ -9,6 +9,6 @@
     - name: Manage sysstat service
       ansible.builtin.service:
         name: "{{ sysstat_service_name }}"
-        state: "{{ sysstat_service_ensure }}" 
-        enabled: "{{ sysstat_service_enable }}" 
+        state: "{{ sysstat_service_ensure }}"
+        enabled: "{{ sysstat_service_enable }}"
       when: not ansible_check_mode

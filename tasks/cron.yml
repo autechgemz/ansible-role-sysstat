@@ -3,7 +3,7 @@
 - name: Manage sysstat cron configration
   ansible.builtin.template:
     src: sysstat.cron.j2
-    dest: "{{ sysstat_config_cronpath }}" 
+    dest: "{{ sysstat_config_cronpath }}"
     owner: root
     group: root
     mode: 0644

@@ -27,7 +27,7 @@
     - name: Manage sysstat configration
       ansible.builtin.template:
         src: sysstat.conf.j2
-        dest: "{{ sysstat_config_file }}" 
+        dest: "{{ sysstat_config_file }}"
         owner: root
         group: root
         mode: 0644
@@ -36,6 +36,6 @@
         - ansible_facts['os_family'] == 'Debian'
         - sysstat_config_options_merged is defined and sysstat_config_options_merged
 
-    - name: Cron tasks 
+    - name: Cron tasks
       ansible.builtin.include_tasks: cron.yml
       when: sysstat_config_crondata is defined and sysstat_config_crondata
