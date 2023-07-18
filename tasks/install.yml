@@ -9,12 +9,11 @@
     - name: Install sysstat package
       when: ansible_os_family == 'Debian'
       ansible.builtin.apt:
-        name: ["{{ item }}"]
+        name: "{{ sysstat_package_name }}"
+        state: "{{ sysstat_package_ensure }}"
         update_cache: true
-      with_items: "{{ sysstat_package_name }}"
     - name: Install sysstat package
       when: ansible_os_family == 'RedHat'
       ansible.builtin.yum:
-        name: ["{{ item }}"]
+        name: "{{ sysstat_package_name }}"
         state: "{{ sysstat_package_ensure }}"
-      with_items: "{{ sysstat_package_name }}"
